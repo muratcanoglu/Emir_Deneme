@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07110f" />
+    <title>DUNGEON ATLAS — Minecraft Dungeons Rehberi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Dungeon Atlas ana sayfa">
+        <span class="brand-cube"><i></i><i></i><i></i></span>
+        <span>DUNGEON <b>ATLAS</b></span>
+      </a>
+      <nav aria-label="Ana menü">
+        <a class="active" href="#harita">HARİTA</a>
+        <a href="#rehber">REHBERLER</a>
+        <a href="#koleksiyon">KOLEKSİYON</a>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-btn" aria-label="Ara">⌕</button>
+        <button class="progress-btn"><span>MACERA İLERLEMESİ</span><strong>37%</strong></button>
+        <button class="avatar" aria-label="Profil">E</button>
+      </div>
+    </header>
+
+    <main id="harita" class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div><span class="eyebrow">İNTERAKTİF HARİTA</span><h1>Zindan Bölgesi</h1></div>
+          <button class="collapse" aria-label="Menüyü daralt">«</button>
+        </div>
+
+        <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Konum veya eşya ara..." /></label>
+        <div class="discovered"><span><i>✓</i> Keşfedilen Noktalar</span><b id="foundCount">4 / 12</b></div>
+        <div class="progress"><i></i></div>
+
+        <section class="filter-group">
+          <button class="filter-title" data-toggle="locations"><span>KONUMLAR</span><b>⌃</b></button>
+          <div id="locations" class="filter-list">
+            <label><input type="checkbox" data-filter="gate" checked><span class="marker gate small">⌂</span><em>Zindan Kapıları</em><b>2</b></label>
+            <label><input type="checkbox" data-filter="secret" checked><span class="marker secret small">?</span><em>Gizli Alanlar</em><b>3</b></label>
+            <label><input type="checkbox" data-filter="camp" checked><span class="marker camp small">♨</span><em>Kamp Alanları</em><b>2</b></label>
+          </div>
+        </section>
+        <section class="filter-group">
+          <button class="filter-title" data-toggle="items"><span>EŞYALAR</span><b>⌃</b></button>
+          <div id="items" class="filter-list">
+            <label><input type="checkbox" data-filter="item" checked><span class="marker item small">◆</span><em>Eşsiz Eşyalar</em><b>3</b></label>
+            <label><input type="checkbox" data-filter="chest" checked><span class="marker chest small">▣</span><em>Sandıklar</em><b>2</b></label>
+          </div>
+        </section>
+        <button class="reset" id="reset">↻ &nbsp; FİLTRELERİ SIFIRLA</button>
+      </aside>
+
+      <section class="map-wrap" aria-label="Zindan haritası">
+        <div class="map-label"><span>DÜNYA / KITA</span><b>KARANLIK ORMAN</b><i>⌄</i></div>
+        <div class="map-tools">
+          <button id="zoomIn">＋</button><button id="zoomOut">−</button><button id="center">⌖</button>
+        </div>
+        <div class="map" id="map">
+          <div class="terrain terrain-1"></div><div class="terrain terrain-2"></div><div class="water"></div>
+          <div class="road road-a"></div><div class="road road-b"></div><div class="road road-c"></div>
+          <div class="trees"></div>
+          <button class="map-marker marker gate selected" data-type="gate" data-place="obsidian" style="left:57%;top:45%">⌂<span>ZİNDAN KAPISI</span></button>
+          <button class="map-marker marker gate" data-type="gate" data-place="moss" style="left:27%;top:22%">⌂</button>
+          <button class="map-marker marker secret" data-type="secret" style="left:70%;top:24%">?</button>
+          <button class="map-marker marker secret" data-type="secret" style="left:38%;top:65%">?</button>
+          <button class="map-marker marker camp" data-type="camp" style="left:17%;top:69%">♨</button>
+          <button class="map-marker marker item" data-type="item" data-place="axe" style="left:74%;top:65%">◆</button>
+          <button class="map-marker marker item" data-type="item" style="left:49%;top:17%">◆</button>
+          <button class="map-marker marker chest" data-type="chest" style="left:88%;top:44%">▣</button>
+          <div class="coordinates">X: 1024 &nbsp; Y: 648 &nbsp; • &nbsp; %100</div>
+        </div>
+
+        <article class="detail-card" id="detailCard">
+          <button class="close-card" id="closeCard" aria-label="Detayı kapat">×</button>
+          <div class="card-visual gate-visual"><span class="visual-tag">ZİNDAN KAPISI</span><i class="pixel-door"></i></div>
+          <div class="card-body">
+            <div class="card-title"><div><span class="eyebrow">KARANLIK ORMAN • BÖLGE II</span><h2>Obsidyen Geçidi</h2></div><button class="bookmark" aria-label="Kaydet">♧</button></div>
+            <p class="description">Kadim muhafızların mühürlediği bu geçit, ormanın altındaki unutulmuş zindana açılır. Kapıyı etkinleştirmek için iki rün taşını bulmalısın.</p>
+            <div class="objective"><span>◇</span><div><small>GEREKLİ EŞYA</small><b>2× Kadim Rün Taşı</b></div><button data-jump="axe">HARİTADA GÖR →</button></div>
+            <h3>NASIL GİDİLİR?</h3>
+            <button class="video" id="playVideo">
+              <span class="video-scene"><i class="play">▶</i></span>
+              <span><small>VİDEOLU ANLATIM • 02:14</small><b>Kuzey Kampından Obsidyen Geçidi'ne</b><em>Adım adım güzergâhı izle</em></span>
+            </button>
+            <div class="gallery-head"><h3>KONUM GÖRSELLERİ</h3><span>1 / 3</span></div>
+            <div class="gallery"><button class="shot one" aria-label="Büyük görseli aç"></button><button class="shot two" aria-label="İkinci görsel"></button><button class="shot three" aria-label="Üçüncü görsel"></button></div>
+            <div class="tips"><b>İPUCU</b><p>Kapının sağındaki sarmaşıklı duvarın arkasında gizli bir sandık var. Etkileşim sesini duyduğunda duvara yaklaş.</p></div>
+            <button class="found-btn" id="markFound"><span>✓</span> KEŞFEDİLDİ OLARAK İŞARETLE</button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div class="toast" id="toast">✓ İlerlemen kaydedildi</div>
+    <div class="modal" id="modal" aria-hidden="true"><div class="modal-box"><button id="closeModal">×</button><div class="fake-player"><i>▶</i><span>Rota videosu burada oynatılacak</span></div><h2>Kuzey Kampından Obsidyen Geçidi'ne</h2><p>Gerçek projenizde YouTube video kimliğini bu alana ekleyerek oynatıcıyı kullanabilirsiniz.</p></div></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
